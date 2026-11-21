@@ -2,7 +2,31 @@
 
 StudyBase is een volledig functionele, AI-aangedreven study workspace om je **volledige leerstof te beheersen** — geen quizsite, geen statisch dashboard. Documentanalyse, een geavanceerde quiz engine, flashcards met spaced repetition, een AI-studiecoach, foutbibliotheek, planner en statistieken zijn onderdeel van **één samenhangend leerproces**.
 
-## Snel starten
+## 🎯 Direct openen in je browser — niets installeren
+
+Requires alleen een GitHub-account (Codespaces is gratis, 2-core maandenlimiet ruim voldoende):
+
+1. Klik op deze repo-pagina op de groene **`< > Code`**-knop.
+2. Open het tabblad **Codespaces** en klik op **Create codespace on main**.
+3. Wacht tot de omgeving klaar is (afhankelijkheden worden automatisch geïnstalleerd).
+4. Typ in het terminalpaneel onderin:
+   ```bash
+   npm run dev
+   ```
+5. Na enkele seconden opent de app automatisch in je browser (of klik op de pop-up **Open in browser** op poort 3000).
+6. Maak een account aan op `/register` en je kunt volledig met de app werken. Stoppen en later verdergaan: de codespace bewaart je database; herstart met `npm run dev`.
+
+> Optionele AI-functionaliteit: maak in de codespace het bestand `.env` aan (of kopieer `.env.example`) en vul `MISTRAL_API_KEY` in; herstart daarna `npm run dev`.
+
+## 📦 Downloaden en lokaal draaien
+
+Download de nieuwste broncode-zip van de branch [`download/studybase`](https://github.com/dorindadontohasare-collab/Leerapp/raw/download/studybase/studybase.zip) (of via de groene **Code**-knop → **Download ZIP**), en lokaal met Node.js 20+:
+
+```bash
+npm install
+cp .env.example .env      # vul MISTRAL_API_KEY in voor AI-functies
+npm run dev               # http://localhost:3000
+```
 
 ```bash
 npm install
