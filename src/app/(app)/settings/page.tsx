@@ -233,15 +233,14 @@ export default function SettingsPage() {
         <p className="muted mb-3 text-sm">Alle exports bevatten alleen jouw gegevens. Back-ups kun je terugzetten in dit account.</p>
         <div className="flex flex-wrap gap-2">
           {([
-            ['full', 'Alles (JSON)'],
-            ['progress', 'Voortgang (JSON)'],
-            ['flashcards', 'Flashcards (JSON)'],
-            ['summaries', 'Samenvattingen (JSON)'],
-            ['quiz', 'Quizzen (JSON)'],
-            ['plan', 'Planning (CSV)'],
-            ['plan', 'Planning (JSON)']
-          ] as [string, string][]).map(([kind, label], i) => {
-            const format = label.includes('CSV') ? 'csv' : 'json';
+            ['full', 'Alles (JSON)', 'json'],
+            ['progress', 'Voortgang (JSON)', 'json'],
+            ['flashcards', 'Flashcards (JSON)', 'json'],
+            ['summaries', 'Samenvattingen (JSON)', 'json'],
+            ['quiz', 'Quizzen (JSON)', 'json'],
+            ['plan', 'Planning (CSV)', 'csv'],
+            ['plan', 'Planning (JSON)', 'json']
+          ] as [string, string, 'json' | 'csv'][]).map(([kind, label, format], i) => {
             return (
               <button key={`${kind}-${i}`} className="btn btn-soft text-sm" disabled={loadingExport === `${kind}-${format}`} onClick={() => void exportData(kind, format)}>
                 {loadingExport === `${kind}-${format}` ? '…' : `⬇ ${label}`}
