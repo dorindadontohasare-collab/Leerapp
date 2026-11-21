@@ -1,0 +1,31 @@
+{
+  "name": "StudyBase — AI-studiewerkplek",
+  "short_name": "StudyBase",
+  "description": "Persoonlijke AI-studieomgeving om je volledige leerstof te beheersen: documentanalyse, quizzen, flashcards, coach en planning.",
+  "id": "/",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#F7F8FC",
+  "theme_color": "#A9C9ED",
+  "lang": "nl",
+  "icons": [
+    {
+      "src": "/icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-maskable.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    { "name": "Dashboard", "url": "/" },
+    { "name": "Quiz herhalen", "url": "/quizzes" },
+    { "name": "Flashcards", "url": "/flashcards" }
+  ]
+}

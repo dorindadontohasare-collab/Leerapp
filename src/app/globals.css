@@ -1,0 +1,185 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ---------- Thema-variabelen (RGB-triplets voor alpha-ondersteuning) ---------- */
+:root {
+  --c-ink: 38 54 74;
+  --c-ink2: 52 58 70;
+  --c-muted: 110 122 142;
+  --c-accentblue: 169 201 237;
+  --c-softblue: 220 235 250;
+  --c-pastelyellow: 247 229 164;
+  --c-pastelpink: 243 201 216;
+  --c-page: 247 248 252;
+  --c-surface: 255 255 255;
+  --c-surface2: 250 251 254;
+  --c-hairline: 232 234 240;
+  --c-success: 61 154 108;
+  --c-danger: 217 83 79;
+  --c-warning: 201 154 51;
+  --c-shadow: 38 54 74;
+  --c-focus: 169 201 237;
+  color-scheme: light;
+}
+
+/* Dark: donkerder inkt-blauw, gedempte pasteltinten, verhoogde oppervlakken */
+[data-theme='dark'] {
+  --c-ink: 233 238 246;
+  --c-ink2: 214 222 234;
+  --c-muted: 142 156 178;
+  --c-accentblue: 126 165 210;
+  --c-softblue: 44 56 76;
+  --c-pastelyellow: 118 102 52;
+  --c-pastelpink: 106 70 88;
+  --c-page: 17 22 31;
+  --c-surface: 26 33 45;
+  --c-surface2: 22 28 39;
+  --c-hairline: 47 57 74;
+  --c-success: 84 180 130;
+  --c-danger: 232 106 102;
+  --c-warning: 222 176 84;
+  --c-shadow: 0 0 0;
+  --c-focus: 126 165 210;
+  color-scheme: dark;
+}
+
+* {
+  border-color: rgb(var(--c-hairline));
+}
+
+html {
+  font-feature-settings: 'ss01';
+}
+
+body {
+  background-color: rgb(var(--c-page));
+  color: rgb(var(--c-ink));
+  font-family: 'Plus Jakarta Sans', Inter, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background-color: rgb(var(--c-accentblue) / 0.5);
+}
+
+:focus-visible {
+  outline: 2px solid rgb(var(--c-accentblue));
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* ---------- Componenten ---------- */
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-[10px] px-4 py-2 text-sm font-semibold transition-all duration-150 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  .btn-primary {
+    @apply btn text-ink;
+    background-color: rgb(var(--c-accentblue));
+  }
+  .btn-primary:hover:not(:disabled) {
+    background-color: rgb(var(--c-accentblue) / 0.85);
+  }
+  .btn-ghost {
+    @apply btn border bg-transparent text-ink2;
+    border-color: rgb(var(--c-hairline));
+  }
+  .btn-ghost:hover:not(:disabled) {
+    background-color: rgb(var(--c-surface2));
+  }
+  .btn-danger {
+    @apply btn text-white;
+    background-color: rgb(var(--c-danger));
+  }
+  .btn-soft {
+    @apply btn text-ink;
+    background-color: rgb(var(--c-softblue));
+  }
+  .btn-yellow {
+    @apply btn text-ink;
+    background-color: rgb(var(--c-pastelyellow));
+  }
+  .input {
+    @apply w-full rounded-[10px] border bg-surface px-3 py-2 text-sm text-ink placeholder:text-muted;
+    border-color: rgb(var(--c-hairline));
+  }
+  .input:focus {
+    border-color: rgb(var(--c-accentblue));
+    outline: 2px solid rgb(var(--c-accentblue) / 0.35);
+    outline-offset: 0;
+  }
+  .card {
+    @apply rounded-card border bg-surface shadow-card;
+    border-color: rgb(var(--c-hairline));
+  }
+  .chip {
+    @apply inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-xs font-semibold;
+  }
+  .label {
+    @apply mb-1 block text-xs font-semibold uppercase tracking-wide text-muted;
+  }
+  .section-title {
+    @apply text-lg font-bold text-ink;
+  }
+  .muted {
+    @apply text-sm text-muted;
+  }
+  .link {
+    @apply underline-offset-2 text-ink underline;
+  }
+  .stat-value {
+    @apply text-2xl font-extrabold tracking-tight text-ink;
+  }
+  .stat-label {
+    @apply text-xs font-medium uppercase tracking-wide text-muted;
+  }
+  .table-base {
+    @apply w-full text-left text-sm;
+  }
+  .table-base th {
+    @apply px-3 py-2 text-xs font-semibold uppercase tracking-wide text-muted;
+  }
+  .table-base td {
+    @apply px-3 py-2 align-top text-ink2;
+  }
+}
+
+@layer utilities {
+  .fade-in {
+    animation: fadeIn 220ms ease-out both;
+  }
+  .slide-up {
+    animation: slideUp 240ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: rgb(var(--c-accentblue) / 0.5);
+  border-radius: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  body {
+    background: white;
+  }
+}
